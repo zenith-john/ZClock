@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>ZClock.ico</file>
+    </qresource>
+</RCC>
