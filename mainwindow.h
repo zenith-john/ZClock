@@ -6,21 +6,24 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
+  public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-protected:
+  protected:
     void closeEvent(QCloseEvent *event) override;
 
-private slots:
+  private slots:
     void on_playbutton_clicked();
 
     void on_working_time_box_valueChanged(int arg1);
@@ -35,7 +38,7 @@ private slots:
 
     void change_to_state(status state);
 
-    void update_time_display(int minute,int second);
+    void update_time_display(int minute, int second);
 
     void changeEvent(QEvent *event) override;
 
@@ -47,12 +50,16 @@ private slots:
 
     void on_reset_button_clicked();
 
-private:
+    void on_song_button_clicked();
+
+    void on_vol_box_valueChanged(int vol);
+
+  private:
     Ui::MainWindow *ui;
-    alarm* x;
-    QSystemTrayIcon* tray;
-    QMenu* tray_menu;
-    QSettings* settings = nullptr;
+    alarm *x;
+    QSystemTrayIcon *tray;
+    QMenu *tray_menu;
+    QSettings *settings = nullptr;
     QString default_dir();
     QString fill_zero(int num);
 };

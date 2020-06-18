@@ -1,19 +1,21 @@
 #ifndef ALARM_H
 #define ALARM_H
 
+#include "schedule.h"
 #include <QtMultimedia>
 #include <QtMultimediaWidgets>
 
-enum status{
+enum status
+{
     work,
-    pause
+    pause,
 };
 
-class alarm: public QObject
+class alarm : public QObject
 {
     Q_OBJECT
 
-public:
+  public:
     alarm(QString string);
     ~alarm();
     void play_music();
@@ -28,30 +30,36 @@ public:
     void start();
     void stop();
     void toggle();
+    void toggle_mute();
+    void toggle_song();
     void reset();
     bool set_dir(QString dirname);
-    QMediaPlayer* get_media_player();
-    QFileInfo* get_current();
+    QMediaPlayer *get_media_player();
+    QFileInfo *get_current();
     QString dir_name();
+    void set_volume(int vol);
+    int get_volume();
+    bool musicable();
 
-public slots:
+  public slots:
     void decrease_second();
     void add_next(QMediaPlayer::MediaStatus);
 
-signals:
+  signals:
     void change_to_state(status state);
-    void change_time(int minute,int second);
+    void change_time(int minute, int second);
 
-private:
-    QMediaPlayer* player;
+  private:
+    bool should_play;
+    QMediaPlayer *player;
     int working_time;
     int pause_time;
-    int minute,second;
+    int minute, second;
     status state;
-    QDir* music_directory;
+    QDir *music_directory;
     QVector<QFileInfo> play_list;
     int count;
-    QTimer* timer;
+    QTimer *timer;
     void change_state();
 };
 

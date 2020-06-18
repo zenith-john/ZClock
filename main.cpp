@@ -1,5 +1,5 @@
-#include "mainwindow.h"
 #include "alarm.h"
+#include "mainwindow.h"
 
 #include <QApplication>
 
