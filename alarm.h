@@ -1,7 +1,6 @@
 #ifndef ALARM_H
 #define ALARM_H
 
-#include "schedule.h"
 #include <QtMultimedia>
 #include <QtMultimediaWidgets>
 

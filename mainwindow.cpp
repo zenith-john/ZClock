@@ -4,7 +4,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    settings = new QSettings("dir.ini", QSettings::IniFormat);
+    settings = new QSettings(QCoreApplication::applicationDirPath() + "/dir.ini", QSettings::IniFormat);
     QString dir = settings->value("dir", default_dir()).toString();
     x = new alarm(dir);
     update_time_display(x->get_working_time(), 0);
