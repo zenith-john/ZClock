@@ -97,8 +97,9 @@ void alarm::next()
     if (play_list.length() == 0)
         return;
     count = (count + 1) % play_list.size();
+    auto state = player->state();
     player->setMedia(QUrl::fromLocalFile(play_list[count].absoluteFilePath()));
-    if (player->state() == QMediaPlayer::PlayingState)
+    if (state == QMediaPlayer::PlayingState)
         play_music();
     else
         stop_music();
